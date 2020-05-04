@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+    sql:
+        image: mcr.microsoft.com/mssql/server:2017-latest
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=Tokyo_Joe_138
+            - MSSQL_PID=developer
+        ports:
+            - 1433:1433
+        networks:
+            - my-network
+    api:
+        image: shopping:latest
+        environment: 
+            - ConnectionStrings__shopping=Server=sql;Database=shopping;User Id=SA;Password=Tokyo_Joe_138
+        ports:
+            - 8080:80
+        networks:
+            - my-network
+networks:
+    my-network:
+        driver: bridge
