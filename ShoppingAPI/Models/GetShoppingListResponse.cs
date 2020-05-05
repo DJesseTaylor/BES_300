@@ -15,5 +15,6 @@ namespace ShoppingAPI.Models
         public string Description { get; set; }
         public bool Purchased { get; set; }
         public string PurchasedFrom { get; set; }
+        public string PurchasedBy { get; set; }
     }
 }
